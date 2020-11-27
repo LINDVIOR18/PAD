@@ -22,7 +22,12 @@ app.config['MYSQL_PASSWORD'] = '01092019'
 app.config['MYSQL_DB'] = 'tests'
 mysql = MySQL(app)
 
-@app.route('/user', methods=['GET', 'POST'])
+
+@app.route("/")
+def hello():
+    return "<h1 style='color:green'>M-am saturat de Universitate!</h1>"
+
+@app.route('/users', methods=['GET', 'POST'])
 @cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def all_books():
     response_object = {'status': 'success'}
@@ -46,3 +51,6 @@ def all_books():
             'users': allUsers
         })
     return jsonify(response_object)
+
+if __name__ == "__main__":
+    app.run()
